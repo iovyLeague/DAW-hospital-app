@@ -1,0 +1,14 @@
+# Local/offline debugging (writes emails/2FA codes to /storage)
+APP_OFFLINE=1
+
+# Optional helpers
+DEV_MODE=1
+DISABLE_2FA=0
+DEV_2FA_CODE=123456
+SITE_URL=ioana-hospital-project.infinityfree.me  # or your live https://domain
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=tls
+SMTP_USER=hospitalioanav@gmail.com
+SMTP_FROM=hospitalioanav@gmail.com
+SMTP_FROM_NAME=Mini Hospital

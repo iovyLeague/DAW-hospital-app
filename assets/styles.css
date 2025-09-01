@@ -1,0 +1,427 @@
+/* ===== Mini Hospital – Modern drop-in stylesheet ===== */
+
+/* culori pt easy checks */
+:root {
+  --bg: #fbf9f7;
+  --surface: #e6e5e2;
+  --text: #000000;
+  --muted: #8d9da0;
+  --border: #f3c4aa;
+  --ring: #daac49;
+
+  --primary: #306b6c;
+  --primary-600: #f3c4aa;
+  --success: #78d4bf;
+  --warning: #d97706;
+  --danger: #ef4444;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212; 
+    --surface: #2e2e2e; 
+    --text: #f5f5f5; 
+    --muted: #9ca3af; 
+    --border: #2c2c2c; 
+    --ring: #3b82f6; 
+
+    --primary: #af7fc2; 
+    --primary-600: #57057c; 
+
+    --success: #4ade80; 
+    --warning: #facc15; 
+    --danger: #f87171;
+  }
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font: 15px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Helvetica,
+    Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* === LAYOUT ==== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+@media (prefers-color-scheme: dark) {
+  header {
+    background: #331440;
+  }
+}
+
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+nav a:hover {
+  background: var(--surface);
+  color: var(--primary);
+  box-shadow: 0 0 0 1px var(--border) inset;
+}
+nav .small {
+  color: var(--muted);
+  padding: 0 6px;
+}
+
+/* cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  margin: 19px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  overflow-x: auto; 
+}
+h1,
+h2,
+h3 {
+  margin: 0 0 12px;
+}
+p {
+  margin: 8px 0;
+}
+
+/* forms */
+label {
+  display: block;
+  margin: 0.6rem 0 0.3rem;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #331440;
+  color: var(--text);
+  outline: 0;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+textarea {
+  resize: vertical;
+}
+
+/* buttons */
+.btn,
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 0.85rem;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  transition: transform 0.05s ease, background 0.15s ease,
+    border-color 0.15s ease, color 0.15s ease;
+  font-size: 11px;
+}
+.btn:hover,
+button:hover {
+  background: #f8fafc;
+  color: #000000;
+}
+.btn:active,
+button:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: transparent;
+  margin-top: 20px;
+}
+.btn-primary:hover {
+  background: var(--primary-600);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.btn-outline:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  border-color: transparent;
+}
+.btn-sm {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+/* flash msg */
+.flash {
+  margin: 8px 0;
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  font-weight: 500;
+  background: #eef2ff;
+  color: #1e40af;
+  border: 1px solid #e0e7ff;
+}
+.flash.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+.flash.info {
+  background: #ecfeff;
+  color: #0e7490;
+  border: 1px solid #cffafe;
+}
+
+/* tabel din admin contact msgs */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--surface);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 0.7rem;
+}
+.table td {
+  padding: 0.7rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.table tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.02);
+}
+@media (prefers-color-scheme: dark) {
+  .table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+.table tbody tr:hover {
+  background: rgba(37, 99, 235, 0.06);
+}
+
+td.actions {
+  white-space: nowrap;
+}
+td.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+td.actions form {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0;
+}
+td.actions select {
+  width: auto;
+  min-width: 130px;
+}
+
+/* message cell editing - makes the msg smaller and not escape */
+.message-cell {
+  max-width: 42ch;              
+}
+
+.message-text {
+  white-space: pre-wrap;         
+  word-break: break-word;      
+  overflow: hidden;
+
+ 
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+ 
+  position: relative;
+}
+.message-cell[data-expanded="false"] .message-text::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1.6em;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), var(--surface));
+}
+@media (prefers-color-scheme: dark) {
+  .message-cell[data-expanded="false"] .message-text::after {
+    background: linear-gradient(to bottom, rgba(0,0,0,0), var(--surface));
+  }
+}
+
+.message-cell[data-expanded="true"] .message-text {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+.message-cell[data-expanded="true"] .message-text::after {
+  display: none;
+}
+
+.message-toggle {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+
+/* === badge === */
+.badge {
+  display: inline-block;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* Role colors */
+.badge-doctor {
+  background: #0275d8;
+  color: #fff;
+}
+
+.badge-patient {
+  background: #b35494;
+  color: #fff;
+}
+
+.badge-admin {
+  background: #6c1a17;
+  color: #fff;
+}
+
+.badge-cancelled {
+  background: #ce5822;
+  color: #fff;
+}
+
+/* Optional fallback */
+.badge-generic {
+  background: #326968;
+  color: #fff;
+}
+
+/* === helper === */
+.small {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  color: var(--muted);
+  padding: 28px 0;
+  text-align: center;
+}
+
+/* responsive layouts */
+@media (max-width: 820px) {
+  nav {
+    gap: 6px 10px;
+  }
+  .table thead {
+    position: sticky;
+    top: 0;
+  }
+  td.actions select {
+    min-width: 100px;
+  }
+}
+
+td.actions {
+  display: table-cell !important;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+td.actions > * {
+  margin: 0 8px 8px 0;
+  vertical-align: middle;
+}
+td.actions form {
+  display: inline-block;
+  margin: 0;
+}
+
+.table thead th {
+  position: static !important;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table tbody tr {
+  border-bottom: 1px solid var(--border);
+}
+.table td,
+.table th {
+  border-bottom: 1px solid var(--border);
+}
